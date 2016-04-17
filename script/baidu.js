@@ -1,3 +1,4 @@
+var load = "<sctipt>var index = layer.load(1, {shade: [0.1,'#fff'] });<script>";
 $(document).ready(function()
 {
 	CreateSearchButton();
@@ -6,24 +7,13 @@ $(document).ready(function()
 		$("#ds").click(function()
 		{
 			var key = $("input[name=oq]").val();
-			// var url = "https://113.10.139.102/server";
-			// $("#container").empty();
-			// $.ajax({
-			// 	url:url,
-			// 	type:"post",
-			// 	dataType:'jsonp',
-			// 	jsonp: "jsoncallback", 
-			// 	data:
-			// 	{
-			// 		q:key
-			// 	},
-            //     success:function(data) 
-			// 	{  
-            //     	  $("#container").append(data);
-            //     },  
-			// })
-			var url = "http://pan.java1234.com/result.php?wp=0&op=0&ty=gn&q="+key;
-			window.location.href=url;
+			layer.open({
+  				type: 1,
+  				skin: 'layui-layer-rim', //加上边框
+  				area: ['800px', '600px'], //宽高
+  				content: "",
+                title:"文件列表"
+			});
 		});	
 	});
 });
