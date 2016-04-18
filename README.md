@@ -1,8 +1,8 @@
-# 网盘搜索   提供网页选中右键选中网盘搜索
+# 文件快搜   提供网页选中右键选中文件搜索
 
 ## 功能介绍
 
-一键网盘搜索，在百度搜索时一键支持网盘搜索.右键网盘搜索，在任意页面选中需要搜索的关键字，右键网盘搜索
+一键文件搜索，在百度搜索时一键支持文件搜索.右键文件搜索，在任意页面选中需要搜索的关键字，右键文件搜索
 
 ## 项目实现
 
@@ -15,7 +15,8 @@ Chrome应用商店<a href="https://chrome.google.com/webstore/detail/%E7%BD%91%E
 
 ## 使用例图
 
-暂无
+![image](https://github.com/liguifa/dropboxSearch/blob/master/example/1.png)
+![image](https://github.com/liguifa/dropboxSearch/blob/master/example/2.png)
 
 ## 更新日志
 

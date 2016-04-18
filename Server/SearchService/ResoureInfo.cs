@@ -8,7 +8,7 @@ namespace SearchService
 {
     public class ResoureInfo
     {
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         public string Introduction { get; set; }
 

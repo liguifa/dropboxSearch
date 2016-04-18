@@ -1,19 +1,25 @@
 {
-	"name":"网盘搜索",
+	"name":"文件快搜",
 	"version":"2.0.0",
 	"manifest_version": 2,  
-	"description":"一键网盘搜索，在百度搜索时一键支持网盘搜索.右键网盘搜索，在任意页面选中需要搜索的关键字，右键网盘搜索",
+	"description":"一键文件搜索，在百度搜索时一键支持文件搜索.右键文件搜索，在任意页面选中需要搜索的关键字，右键文件搜索",
 	"browser_action": 
 	{  
     	"default_icon": "res/icon.png" ,
-    	"default_title": "网盘搜索",
+    	"default_title": "文件快搜",
     	"default_popup": "views/popup.html"
+    },
+    "icons":
+    {
+        "16": "res/icon_16.png",             
+        "48": "res/icon_48.png",            
+        "128": "res/icon_128.png"   
     },
 	"content_scripts": 
 	[{
-    	"matches": ["https://www.baidu.com/s?*","http://www.baidu.com/s?*"],
+    	"matches": ["https://www.baidu.com/s*"],
     	"js": ["script/jquery.min.js", "script/baidu.js","lib/layer/layer.js","lib/layer/extend/layer.ext.js"],
-		"css":["lib/layer/skin/layer.css","lib/layer/skin/layer.ext.css"]
+		"css":["lib/layer/skin/layer.css","lib/layer/skin/layer.ext.css","lib/AmazeUI/css/amazeui.min.css"]
     }],
 	"permissions": 
 	[

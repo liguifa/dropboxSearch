@@ -11,9 +11,9 @@ namespace DropboxSearch.Controllers
     {
         // GET: Dropbox
         [HttpGet]
-        public string Search(string key, string jsonpcallbadk)
+        public string Search(string key)
         {
-            return String.Format("{0}({1})", jsonpcallbadk, SearchManager.Search(key));
+            return String.Format(@"{{""rows"":{0}}}",SearchManager.Search(key));
         }
     }
 }

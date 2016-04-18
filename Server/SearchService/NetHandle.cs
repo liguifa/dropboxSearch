@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlGet;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SearchService
         private string mWebSiteName;
         private string mKey;
 
-        public NetHandle(string webSiteName,string webSiteUrl, string key)
+        public NetHandle(string webSiteName, string webSiteUrl, string key)
         {
             this.mWebSiteUrl = webSiteUrl;
             this.mWebSiteName = webSiteName;
@@ -40,14 +41,46 @@ namespace SearchService
 
         private List<ResoureInfo> ParseHtml(string html)
         {
-            string regexStr = "<li\\sclass=\"b_algo\"\\sdata-bm=\"[0 - 9]{ 1,2}\">.*</li>*";
-            Regex regex = new Regex(regexStr);
-            Match match = regex.Match(html);
-            if(match!=null)
+            List<ResoureInfo> resoures = new List<ResoureInfo>();
+            HtmlParse parse = new HtmlParse(html);
+            List<string> nodes = parse.GetNodeByTagName("li");
+            foreach (string node in nodes)
             {
-                string temp = match.Value;
+                ResoureInfo resoure = new ResoureInfo();
+                parse = new HtmlParse(node);
+                List<string> titles = parse.GetNodeByTagName("h2");
+                if (titles.Count > 0)
+                {
+                    HtmlParse nodeParse = new HtmlParse(titles.First());
+                    resoure.Title = nodeParse.ToText().Replace(@"""", "'"); ;
+                }
+                else
+                {
+                    continue;
+                }
+                List<string> introductions = parse.GetNodeByTagName("p");
+                if (introductions.Count > 0)
+                {
+                    HtmlParse nodeParse = new HtmlParse(introductions.First());
+                    resoure.Introduction = nodeParse.ToText().Replace(@"""","");
+                }
+                else
+                {
+                    continue;
+                }
+                List<string> hrefs = parse.GetHref();
+                if (hrefs.Count > 0)
+                {
+                    resoure.Url = hrefs.First();
+                }
+                else
+                {
+                    continue;
+                }
+                resoure.WebSite = this.mWebSiteName;
+                resoures.Add(resoure);
             }
-            return null;
+            return resoures;
         }
     }
 }
